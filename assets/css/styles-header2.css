@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+  --tertiary-color: #7cff1a;
+  --line-color: #999999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  color: var(--tertiary-color);
+}
+
+#menu li {
+  list-style: none;
+  text-transform: capitalize;
+  font-size: 18px;
+  position: relative;
+}
+
+#menu li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  display: block;
+  padding: 0.5rem;
+  
+}
+
+#menu li a:hover {
+  color: var(--tertiary-color);
+}
+#logo img {
+  width: 100px;
+}
+
+/* Cabeçalho */
+#header {
+  /* Propriedades Flex */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+
+  width: 100%;
+
+  /* Definição de altura de preenchimento */
+  height: 90px;
+  padding: 1rem;
+  box-sizing: border-box; /* Soma height com o padding */
+
+  border-bottom: 3px solid #7cff1a;
+}
+
+/* Menu nav */
+#menu {
+  display: flex;
+  gap: 0.5rem;
+
+}
+    /* Midias Sociais */
+.c-social  {
+    padding-left: 300px;
+     
+}
+
+    /* Style das oções do menu */
+#menu li a::after{
+    content: " ";
+    width: 0px;
+    height: 2px;
+    background-color: var(--tertiary-color);
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    transition: width .5s;
+    
+}
+
+#menu li a:hover::after{
+    width: 55%;
+    color: var(--tertiary-color);
+}
+
+    /* Style dos botões de midia social */
+.c-social button {
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondary-color);
+    border: none;
+    font-size: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+    
+}
+
+.c-social button i:hover{
+    color: var(--primary-color);
+    transition: all .4s;
+}
+
+    /* Menu para Mobile */
+#btn-mobile {
+  display: none;
+}
+
+    /* Formatação para telas menores que 920px */
+@media only screen and (max-width: 920px) {
+  #btn-mobile {
+    display: flex;
+    padding: 0.5rem 1rem;
+    font-size: rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    gap: 0.5rem;
+  }
+    /* Menu Hamburguer */
+  #hamburguer {
+    display: block;
+    border-top: 3px solid;
+    width: 30px;
+  }
+
+  #hamburguer::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: currentColor;
+    margin-top: 5px;
+    transition: .3s;
+    position: relative;
+  }
+  #hamburguer::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: var(--primary-color);
+    margin-top: 5px;
+    transition: .3s;
+  }
+    /* Mudar cor do primeiro item do hamburguer para transparente */
+  #nav.active #hamburguer {
+    border-top-color: transparent;
+  }
+  /* Animação de rotação ao clicar no menu */
+  #nav.active #hamburguer::after {
+    background: var(--line-color);
+    transform: rotate(-135deg);
+    top: -8px;
+  }
+
+  #nav.active #hamburguer::before {
+    background: var(--line-color);
+    transform: rotate(135deg);
+  }
+
+    /* Caracteristicas do Menu Mobile */
+  #menu {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 90px;
+    right: 0;
+    text-align: center;
+    background-color: var(--secondary-color);
+    height: 0;
+    z-index: 1000;
+
+    /* Transição */
+    transition: 0.6s;
+    visibility: hidden;
+    overflow-y: hidden;
+
+  }
+
+
+.c-social  {
+    padding-left: 0;
+    margin-top: 40px;
+     
+}
+
+  #menu a {
+    padding: 9rem 8;
+    margin: 30px 1rem;
+    /* border-bottom: 1px solid var(--line-color); */
+    
+  }
+
+  #nav.active #menu {
+    height: calc(100vh - 90px);
+    visibility: visible;
+    overflow-y: auto; /* Cria uma barra de rolagem, caso tenha mais itens */
+  }
+}
